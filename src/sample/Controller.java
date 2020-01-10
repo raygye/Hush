@@ -32,8 +32,8 @@ public class Controller {
         System.out.println("Submit");
         String text = read.getText().replace(' ', 'λ');
         String line;
-        OutputStream stdin = null;
-        InputStream stdout = null;
+        OutputStream stdin;
+        InputStream stdout;
 
         // execute and grab stdin/stdout
         Process process = Runtime.getRuntime().exec("./src/sample/enigma.exe");
