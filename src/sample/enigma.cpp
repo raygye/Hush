@@ -118,11 +118,13 @@ char *unscramble(char *encrypted, unsigned long key) {
 }
 int main() {
     int sel;
-    char translate[32];
+    std::string trans;
     unsigned long key;
     char* text;
     std::cin >> sel;
-    std::cin >> translate;
+    std::cin >> trans;
+    char *translate = new char[trans.length()+1];
+    strcpy(translate, trans.c_str());
     std::cin >> key;
     if (sel == 0) {
         text = scramble(translate, key);
@@ -132,5 +134,6 @@ int main() {
         text = unscramble(translate, key);
         std::cout << text;
     }
+    delete [] translate;
     return 0;
 }

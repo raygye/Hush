@@ -30,6 +30,7 @@ public class Controller {
     }
     public void submit() throws IOException {
         System.out.println("Submit");
+        Process p = Runtime.getRuntime().exec("g++ enigma.cpp -o enigma");
         String text = read.getText().replace(' ', 'λ');
         String line;
         OutputStream stdin;
