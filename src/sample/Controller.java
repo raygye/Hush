@@ -30,14 +30,13 @@ public class Controller {
     }
     public void submit() throws IOException {
         System.out.println("Submit");
-        Process p = Runtime.getRuntime().exec("g++ enigma.cpp -o enigma");
         String text = read.getText().replace(' ', 'λ');
         String line;
         OutputStream stdin;
         InputStream stdout;
 
         // execute and grab stdin/stdout
-        Process process = Runtime.getRuntime().exec("./src/sample/enigma.exe");
+        Process process = Runtime.getRuntime().exec("enigma.exe");
         stdin = process.getOutputStream ();
         stdout = process.getInputStream ();
 

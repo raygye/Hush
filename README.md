@@ -6,4 +6,4 @@ by Claude Shannon and was notably used in WWII.
 
 Choose any key that you wish, but do not reuse keys. Key reuse is a major security flaw that can lead to message leaks.
 
-Note: Please compile the C++ file before running.
+Note: On first use of the application, please wait as it compiles the .exe file. 
