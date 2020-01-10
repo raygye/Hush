@@ -16,14 +16,14 @@
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <Label text="Key:"
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField fx:id="passwordField"
+    <PasswordField fx:id="key" onAction="#submit"
                    GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <Label text="Text:"
            GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-    <TextField
+    <TextField fx:id="read" onAction="#submit"
         GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-    <Button text="Submit" fx:id="button" onAction="#submit"
+    <Button text="Go" fx:id="button" onAction="#submit"
             GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-    <Text text="" fx:id="reveal"
+    <TextField fx:id="reveal" visible="false"
           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
 </GridPane>
