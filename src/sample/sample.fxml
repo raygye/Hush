@@ -10,7 +10,7 @@
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
     <Text text="Select encode or decode:" fx:id="select" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <Button text="Encode" fx:id="encode" onAction="#sel1"
+    <Button text="Encode" fx:id="encode" id="encode" onAction="#sel1"
             GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <Button text="Decode" fx:id="decode" onAction="#sel2"
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>

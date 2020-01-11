@@ -23,6 +23,7 @@ public class Controller {
     public Stage primaryStage;
     public File file = null;
     FileChooser fileChooser = new FileChooser();
+
     public void sel1() {
         decode.setStyle(null);
         fileSelect.setStyle(null);
@@ -38,9 +39,7 @@ public class Controller {
         decode.setStyle("-fx-background-color: silver");
     }
     public void file() {
-        encode.setStyle(null);
-        decode.setStyle(null);
-        fileSelect.setStyle("-fx-background-color: silver");
+        read.setText("");
         if (sel == 0) {
             fileChooser.setTitle("Open File To Be Encoded");
         }
@@ -60,7 +59,7 @@ public class Controller {
         Process process = Runtime.getRuntime().exec("enigma.exe");
         stdin = process.getOutputStream ();
         stdout = process.getInputStream ();
-        if (file == null) {
+        if (!read.getText().equals("")) {
             // writing
             line = sel + "\n" + key.getText() + "\n" + text;
             stdin.write(line.getBytes());
@@ -82,7 +81,7 @@ public class Controller {
         // clean up if any output in stdout
         BufferedReader readOut =
                 new BufferedReader (new InputStreamReader (stdout));
-        if (file == null) {
+        if (text != null) {
             while ((line = readOut.readLine()) != null) {
                 reveal.setVisible(true);
                 line = line.replace('λ', ' ');
@@ -92,7 +91,6 @@ public class Controller {
         else {
             PrintWriter writer = new PrintWriter(file.getName(), "UTF-8");
             while ((line = readOut.readLine()) != null) {
-                reveal.setVisible(true);
                 line = line.replace('λ', ' ');
                 writer.println(line+"\n");
             }
