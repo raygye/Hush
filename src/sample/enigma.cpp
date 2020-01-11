@@ -118,14 +118,28 @@ char *unscramble(char *encrypted, unsigned long key) {
 }
 int main() {
     int sel;
-    std::string trans;
+    std::string trans, a;
     unsigned long key;
     char* text;
     std::cin >> sel;
-    std::cin >> trans;
+    std::cin >> key;
+    std::getline(std::cin,a);
+    trans=a;
+    //you gotta do it twice man you gotta do it TWICE
+    std::getline(std::cin,a);
+    trans=a;
+    while (true){
+        std::getline(std::cin,a);
+        if (a == "sysclose29110391039484horse") {
+            break;
+        }
+        else if (a == trans) {
+            break;
+        }
+        trans+=("\n" + a);
+    }
     char *translate = new char[trans.length()+1];
     strcpy(translate, trans.c_str());
-    std::cin >> key;
     if (sel == 0) {
         text = scramble(translate, key);
         std::cout << text;

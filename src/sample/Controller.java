@@ -4,29 +4,50 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
+import java.nio.file.Files;
 
 public class Controller {
     int sel=0;
     public Button button;
     public Button encode;
     public Button decode;
+    public Button fileSelect;
     public Text select;
     public TextField reveal;
     public TextField read;
     public PasswordField key;
+    public Stage primaryStage;
+    public File file = null;
+    FileChooser fileChooser = new FileChooser();
     public void sel1() {
         decode.setStyle(null);
+        fileSelect.setStyle(null);
         System.out.println("Encode");
         encode.setStyle("-fx-background-color: silver");
         sel = 0;
     }
     public void sel2() {
         encode.setStyle(null);
+        fileSelect.setStyle(null);
         System.out.println("Decode");
         sel = 1;
         decode.setStyle("-fx-background-color: silver");
+    }
+    public void file() {
+        encode.setStyle(null);
+        decode.setStyle(null);
+        fileSelect.setStyle("-fx-background-color: silver");
+        if (sel == 0) {
+            fileChooser.setTitle("Open File To Be Encoded");
+        }
+        else {
+            fileChooser.setTitle("Open File To Be Decoded");
+        }
+        file = fileChooser.showOpenDialog(primaryStage);
     }
     public void submit() throws IOException {
         System.out.println("Submit");
@@ -35,27 +56,50 @@ public class Controller {
         OutputStream stdin;
         InputStream stdout;
 
-        // execute and grab stdin/stdout
+        //stdin/out
         Process process = Runtime.getRuntime().exec("enigma.exe");
         stdin = process.getOutputStream ();
         stdout = process.getInputStream ();
-
-        // "write" the parms into stdin
-        line = sel + " " + text + " " + key.getText();
-        stdin.write(line.getBytes());
+        if (file == null) {
+            // writing
+            line = sel + "\n" + key.getText() + "\n" + text;
+            stdin.write(line.getBytes());
+            stdin.write("\nsysclose29110391039484horse".getBytes());
+        }
+        else {
+            //writing
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+            byte[] bytes = Files.readAllBytes(file.toPath());
+            outputStream.write((sel+ "\n").getBytes());
+            outputStream.write((key.getText()+ "\n").getBytes());
+            outputStream.write(bytes);
+            outputStream.write("\nsysclose29110391039484horse".getBytes());
+            stdin.write(outputStream.toByteArray());
+        }
 
         stdin.close();
 
         // clean up if any output in stdout
         BufferedReader readOut =
                 new BufferedReader (new InputStreamReader (stdout));
-        while ((line = readOut.readLine ()) != null) {
-            reveal.setVisible(true);
-            line = line.replace('λ', ' ');
-            reveal.setText(line);
+        if (file == null) {
+            while ((line = readOut.readLine()) != null) {
+                reveal.setVisible(true);
+                line = line.replace('λ', ' ');
+                reveal.setText(line);
+            }
+        }
+        else {
+            PrintWriter writer = new PrintWriter(file.getName(), "UTF-8");
+            while ((line = readOut.readLine()) != null) {
+                reveal.setVisible(true);
+                line = line.replace('λ', ' ');
+                writer.println(line+"\n");
+            }
+            writer.close();
         }
         readOut.close();
-
-        System.out.println("Success...");
+        System.out.println("Success");
+        file = null;
     }
 }
