@@ -56,7 +56,7 @@ public class Controller {
         InputStream stdout;
 
         //stdin/out
-        Process process = Runtime.getRuntime().exec("enigma.exe");
+        Process process = Runtime.getRuntime().exec("enigma.out");
         stdin = process.getOutputStream ();
         stdout = process.getInputStream ();
         if (!read.getText().equals("")) {
