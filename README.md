@@ -6,4 +6,6 @@ by Claude Shannon and was notably used in WWII.
 
 Choose any key that you wish, but do not reuse keys. Key reuse is a major security flaw that can lead to message leaks.
 
+A jar is available to run the program.
+
 Note: On first use of the application, please wait as it compiles the .exe file. 
