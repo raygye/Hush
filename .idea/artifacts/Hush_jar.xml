@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Hush:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Hush_jar</output-path>
+    <root id="archive" name="Hush.jar">
+      <element id="module-output" name="Hush" />
+      <element id="extracted-dir" path="C:/Program Files/Java/jdk/lib/javafx-mx.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
