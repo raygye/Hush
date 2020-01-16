@@ -65,8 +65,9 @@ public class Controller {
             line = sel + "\n" + key.getText() + "\n" + text;
             stdin.write(line.getBytes());
             stdin.write("\nsysclose29110391039484horse".getBytes());
+            stdin.close();
         }
-        else {
+        else if (file!=null){
             //writing
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
             byte[] bytes = Files.readAllBytes(file.toPath());
@@ -75,9 +76,11 @@ public class Controller {
             outputStream.write(bytes);
             outputStream.write("\nsysclose29110391039484horse".getBytes());
             stdin.write(outputStream.toByteArray());
+            stdin.close();
         }
-
-        stdin.close();
+        else {
+            return;
+        }
 
         // clean up if any output in stdout
         BufferedReader readOut =
