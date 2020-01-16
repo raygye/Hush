@@ -13,9 +13,11 @@ Note: On first use of the application, please wait as it compiles the .exe file.
 Below is a demonstration:
 
 Encoding:
+
 ![](media/encode.gif)
 
 Decoding:
+
 ![](media/decode.gif)
 
 For files:
