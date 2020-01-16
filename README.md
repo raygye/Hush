@@ -24,9 +24,12 @@ For this example, we'll be using this .iml file created by my IDE (it follows ma
 
 First we'll select the file and with a key entered, we'll press go
 ![](media/filegif2.gif)
+
 Now a duplicate file will be found in Hush directory looking something like this.
 ![](media/filegif3.gif)
+
 The file has been encrypted! Now if we want to revert it, we just need to use the decode function...
 ![](media/filegif4.gif)
+
 There we go! The file has been decoded!
 ![](media/filegif5.gif)
