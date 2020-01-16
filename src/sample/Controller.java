@@ -57,7 +57,7 @@ public class Controller {
         InputStream stdout;
 
         //stdin/out
-        Process process = Runtime.getRuntime().exec("enigma.out");
+        Process process = Runtime.getRuntime().exec("./enigma.out");
         stdin = process.getOutputStream ();
         stdout = process.getInputStream ();
         if (!read.getText().equals("")) {
@@ -82,7 +82,7 @@ public class Controller {
         // clean up if any output in stdout
         BufferedReader readOut =
                 new BufferedReader (new InputStreamReader (stdout));
-        if (text != null) {
+        if (!read.getText().equals("")) {
             while ((line = readOut.readLine()) != null) {
                 reveal.setVisible(true);
                 line = line.replace('λ', ' ');

@@ -23,7 +23,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        Process process = Runtime.getRuntime().exec("g++ enigma.cpp -o enigma.out");
+        Process process = Runtime.getRuntime().exec("g++ ./enigma.cpp -o ./enigma.out");
         InputStream errStream = process.getErrorStream();
         Scanner scanner = new Scanner(errStream);
         String err = "";
