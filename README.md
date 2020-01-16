@@ -24,7 +24,7 @@ For files:
 For this example, we'll be using this .iml file created by my IDE (it follows markup convention)
 ![](media/filepng.png)
 
-First we'll select the file and with a key entered, we'll press go
+First we'll select the file and with a key entered, we'll press go...
 ![](media/filegif2.gif)
 
 Now a duplicate file will be found in Hush directory looking something like this.
