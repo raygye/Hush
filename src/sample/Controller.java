@@ -49,6 +49,7 @@ public class Controller {
         file = fileChooser.showOpenDialog(primaryStage);
     }
     public void submit() throws IOException {
+        reveal.setVisible(false);
         System.out.println("Submit");
         String text = read.getText().replace(' ', 'λ');
         String line;
